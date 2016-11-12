@@ -100,7 +100,7 @@ def pause():
             #gameDisplay.fill(white)
             message_to_screen("Paused", black, -100, size = "large")
             message_to_screen("Press C to continue or Q to quit.", black, 25)
-            pygame.display.update()
+            pygame.display.flip()
 def score(score):
     text = smallfont.render("Score:" + str(score), True, black)
     gameDisplay.blit(text, [0,0])
@@ -184,7 +184,7 @@ def gameLoop():
                               black,
                               50,
                               size="medium")
-            pygame.display.update()
+            pygame.display.flip()
 
         while gameOver :
             for event in pygame.event.get():
