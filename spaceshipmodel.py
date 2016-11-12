@@ -251,15 +251,18 @@ def gameLoop():
                          v -= 1
                          k -= 1
                except:
-                   v = 100 
+                   v = 10000
                v += 1
-          if lzls[k].pos[0] > display_width or lzls[k].pos[0] < 0:
-               del lzls[k]
-               k -= 1
-          elif lzls[k].pos[1] > display_height or lzls[k].pos[1] < 0:
-               del lzls[k]
-               k -=1
-          k += 1
+          try:
+               if lzls[k].pos[0] > display_width or lzls[k].pos[0] < 0:
+                    del lzls[k]
+                    k -= 1
+               elif lzls[k].pos[1] > display_height or lzls[k].pos[1] < 0:
+                    del lzls[k]
+                    k -=1
+               k += 1
+          except:
+               k = 10000
         display(player)
         score(player[4])
         pygame.display.flip()
