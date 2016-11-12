@@ -21,6 +21,13 @@ class Enimy:
       self.pos = poses
       self.vel = vels
       self.rot = atan3(vels[1],vels[0])
+class Lazer:
+   def __init__ (positon, rotation):
+      pos = position
+      rot = rotation
+   def update(self):
+      self.pos[0] += 10 * math.sin(rotation)
+      self.pos[1] += 10 * math.cos(rotation)
 pygame.init()
 
 white = (255, 255, 255)
@@ -33,10 +40,10 @@ display_height = 600
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Spaceships')
-icon = pygame.image.load('C:/Users/akupp_000/Pictures/Apple.png')
+icon = pygame.image.load('')
 pygame.display.set_icon(icon)
-img = pygame.image.load('C:/Users/akupp_000/Pictures/SnakeHead.png')
-apple_img = pygame.image.load('C:/Users/akupp_000/Pictures/Apple.png')
+img = pygame.image.load('')
+apple_img = pygame.image.load('')
 
 clock = pygame.time.Clock()
 AppleThickness = 30
