@@ -19,7 +19,7 @@ def check(path,image):
          	 folder = folder.replace("/?Gunn-project-pygame/?", "")
         	 folder = folder.replace("/\z", "")
         	 icon_path = "C:/Users/" + folder + pt2
-        	 icon_check(icon_path, image)
+        	 check(icon_path, image)
 check(icon_path, "icon")
 icon = pygame.image.load(icon_path)
 import time
