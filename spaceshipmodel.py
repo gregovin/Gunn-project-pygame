@@ -6,7 +6,6 @@ folder = folder.replace("/\z", "")
 icon_path = "/Users/" + folder + "/Gunn-project-pygame-master/spaceship.jpeg"
 Enimils = []
 import pygame
-pygame.key.set_repeat(100, 100)
 def check(path,image):
      print path
      try:
@@ -84,6 +83,7 @@ pygame.init()
 smallfont = pygame.font.SysFont("comicsansms", 25)
 medfont = pygame.font.SysFont("comicsansms", 50)
 largefont = pygame.font.SysFont("comicsansms", 80)
+pygame.key.set_repeat(100, 100)
 def pause():
     paused = True
     while paused:
