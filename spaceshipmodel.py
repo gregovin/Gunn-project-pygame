@@ -79,8 +79,6 @@ Enimyrange=10
 block_size = 20
 FPS = 15
 player = [display_width/2, display_height/2, 0, 0, 0]
-you_rect = You.get_rect()
-you_rect.center = (player[0], player[1])
 direction = "right"
 pygame.init()
 smallfont = pygame.font.SysFont("comicsansms", 25)
@@ -138,11 +136,10 @@ def game_intro():
 
 
 def display(Player):
-    Disp = pygame.transform.rotate(You, -player[4]*180/math.pi)
-    you_rect.center = (player[0], player[1])
-    gameDisplay.blit(Disp, (you_rect.left, you_rect.top))
-    player[0] += player[2]
-    player[1] += player[4]
+    Disp = pygame.transform.rotate(You, -Player[4]*180/math.pi)
+    gameDisplay.blit(Disp, (Player[0], Player[1]))
+    Player[0] += Player[2]
+    Player[1] += Player[4]
 
 def text_objects(text, color, size):
     if size == "small":
@@ -174,7 +171,7 @@ def gameLoop():
 
     Enimils = []
     lzls = []
-    player = [display_width/2, display_height/2, 0, 0, 0]
+    Player = [display_width/2, display_height/2, 0, 0, 0]
     while not gameExit:
         if gameOver:
             gameDisplay.fill(white)
@@ -208,39 +205,39 @@ def gameLoop():
                 gameExit = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    player[2] -= 1
+                    Player[2] -= 1
                     lead_x_change = -block_size
                     lead_y_change = 0
                 elif event.key == pygame.K_RIGHT:
-                    player[2] += 1
+                    Player[2] += 1
                     lead_x_change = block_size
                     lead_y_change = 0
                 elif event.key == pygame.K_UP:
-                    player[3] -= 1
+                    Player[3] -= 1
                     lead_y_change = -block_size
                     lead_x_change = 0
                 elif event.key == pygame.K_DOWN:
-                    player[3] += 1
+                    Player[3] += 1
                     lead_y_change = block_size
                     lead_x_change = 0
                 elif event.key == pygame.K_SPACE:
                     lzls.append(Lazer([player[0]+5*math.sin(player[4]),player[1]+5*math.cos(player[4])],player[4]))
                 elif event.key == pygame.K_p:
                     pause()
-        if player[0] > display_width:
-            player[0] = 1
+        if Player[0] > display_width:
+            Player[0] = 1
         elif player[0] < 0:
-            player[0] = display_width-1
-        if player[1] > display_height:
-            player[1] = 1
-        elif player[1] < 0:
-            player[1] = display_height-1
-        player[4] = atan3(player[3], player[2])
+            Player[0] = display_width-1
+        if Player[1] > display_height:
+            Player[1] = 1
+        elif Player[1] < 0:
+            Player[1] = display_height-1
+        Player[4] = atan3(Player[3], Player[2])
         gameDisplay.fill(white)
         #pygame.draw.rect(gameDisplay, red, [randAppleX, randAppleY, AppleThickness, AppleThickness])
         for i in Enimils:
             gameDisplay.blit(pygame.transform.rotate(Enimage, i.rot*180/math.pi), (i.pos[0], i.pos[1]))
-            if (i.pos[0]-player[0])**2 + (i.pos[1]-player[1])**2 < Enimyrange ** 2:
+            if (i.pos[0]-Player[0])**2 + (i.pos[1]-Player[1])**2 < Enimyrange ** 2:
                 gameOver = True
             i.update()
             i.track(player[0], player[1])
@@ -269,8 +266,8 @@ def gameLoop():
                k += 1
           except:
                k = 10000
-        display(player)
-        score(player[4])
+        display(Player)
+        score(Player[4])
         pygame.display.flip()
 
         ##        if lead_x >= randAppleX and lead_x <= randAppleX + AppleThickness:
@@ -279,7 +276,7 @@ def gameLoop():
         ##                randAppleY = round(random.randrange(0, display_height-block_size))#/10.0)*10.0
         ##                snakeLength += 1
 
-        if random.randint(0, 20) > 18:
+        if random.randint(0, 30) > 28:
             x, y = random.randint(0, display_width), random.randint(0, display_height)
             if (x-player[0])**2 + (y-player[1])**2 >= Enimyrange**2:
                Enimils.append(Enimy([x, y]))
