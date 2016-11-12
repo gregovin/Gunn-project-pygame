@@ -36,16 +36,16 @@ def atan3(y, x):
       return math.atan2(y, x)
 player = [200, 200, 0, 0, 0]
 class Enimy:
-   def track(x, y):
+   def track(self, x, y):
      distx = x-self.pos[0]
      disty = y-self.pos[1]
-     self.rot = atan3(disty/distx)
-     self.vel[0] = 10 * cos(self.rot)
-     self.vel[1] = 10 * sin(self.rot)
+     self.rot = atan3(disty,distx)
+     self.vel[0] = 10 * math.cos(self.rot)
+     self.vel[1] = 10 * math.sin(self.rot)
    def update(self):
       self.pos[0] = self.pos[0] + self.vel[0]
       self.pos[1] = self.pos[1] + self.vel[1]
-      self.rot = atan3(vel[1]/vel[0])
+      self.rot = atan3(self.vel[1]/self.vel[0])
       
    def __init__(self, poses):
       self.pos = poses
@@ -73,6 +73,7 @@ Enimage = pygame.image.load('/Users/'+folder+'/Gunn-project-pygame-master/Enimy.
 You = pygame.image.load('/Users/'+folder+'/Gunn-project-pygame-master/you.png')
 lz = pygame.image.load('/users/'+folder+'/Gunn-project-pygame-master/lazer.png')
 You = pygame.transform.rotate(You, 45)
+You = pygame.transform.scale(You, 0.20)
 clock = pygame.time.Clock()
 Enimyrange=10
 block_size = 20
@@ -265,9 +266,9 @@ def gameLoop():
         ##                snakeLength += 1
 
         if random.randint(0, 10) > 8:
-            x, y = random.randint(0, display_width), random.randint(0, display_hight)
+            x, y = random.randint(0, display_width), random.randint(0, display_height)
             if (x-player[0])**2 + (y-player[1])**2 >= Enimyrange**2:
-               Enimils.append(Enimy(x, y))
+               Enimils.append(Enimy([x, y]))
 
         clock.tick(FPS)
 
