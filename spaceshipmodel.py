@@ -52,12 +52,12 @@ class Enimy:
       self.vel = [0, 0]
       self.rot = 0
 class Lazer:
-   def __init__ (positon, rotation):
-      pos = position
-      rot = rotation
+   def __init__ (self, positon, rotation):
+      self.pos = position
+      self.rot = rotation
    def update(self):
-      self.pos[0] += 10 * math.sin(rotation)
-      self.pos[1] += 10 * math.cos(rotation)
+      self.pos[0] += 10 * math.sin(self.rot)
+      self.pos[1] += 10 * math.cos(self.rot)
 white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
@@ -75,7 +75,7 @@ lz = pygame.image.load('/users/'+folder+'/Gunn-project-pygame-master/lazer.png')
 You = pygame.transform.rotate(You, 45)
 You = pygame.transform.scale(You, (You.get_rect().width/5, You.get_rect().height/5))
 clock = pygame.time.Clock()
-Enimyrange=10
+Enimyrange=20
 block_size = 20
 FPS = 15
 direction = "right"
