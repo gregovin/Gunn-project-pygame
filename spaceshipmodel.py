@@ -136,7 +136,7 @@ def game_intro():
 
 
 def display(Player):
-    Disp = pygame.transform.rotate(You, player[4]*180/math.pi)
+    Disp = pygame.transform.rotate(You, -player[4]*180/math.pi)
 
     gameDisplay.blit(Disp, (player[0],player[1]))
     player[0] += player[2]
