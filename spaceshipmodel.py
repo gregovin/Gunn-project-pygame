@@ -1,5 +1,7 @@
 folder = str(input("what is the folder path of the downloaded folded"))
 folder = folder.replace("C:/Users/", "")
+folder = folder.replace("/?Gunn-project-pygame/?", "")
+folder = folder.replace("/\z", "")
 icon_path = "C:/Users/" + folder + "/Gunn-project-pygame/spaceship.jpeg"
 def check(path,image):
    try:
@@ -11,7 +13,7 @@ def check(path,image):
    folder = folder.replace("C:/Users/", "")
    icon_path = "C:/Users/" + folder + pt2
    icon_check(icon_path, image)
-check(icon_path, "icon"
+check(icon_path, "icon")
 import pygame
 import time
 import random
