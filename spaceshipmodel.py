@@ -240,7 +240,7 @@ def gameLoop():
             if (i.pos[0]-Player[0])**2 + (i.pos[1]-Player[1])**2 < Enimyrange ** 2:
                 gameOver = True
             i.update()
-            i.track(player[0], player[1])
+            i.track(Player[0], Player[1])
         k = 0
         while k<len(lzls):
           v = 0
