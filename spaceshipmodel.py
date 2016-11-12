@@ -1,3 +1,17 @@
+folder = str(input("what is the folder path of the downloaded folded"))
+folder = folder.replace("C:/Users/", "")
+icon_path = "C:/Users/" + folder + "/Gunn-project-pygame/spaceship.jpeg"
+def check(path,image):
+   try:
+      icon = pygame.image.load(icon_path)
+   except:
+      folder = str(input("what is the folder path of the downloaded folded"))
+   if image == "icon"
+      pt = "/Gunn-project-pygame/spaceship.jpeg"
+   folder = folder.replace("C:/Users/", "")
+   icon_path = "C:/Users/" + folder + pt2
+   icon_check(icon_path, image)
+check(icon_path, "icon"
 import pygame
 import time
 import random
@@ -40,7 +54,6 @@ display_height = 600
 
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Spaceships')
-icon = pygame.image.load('')
 pygame.display.set_icon(icon)
 img = pygame.image.load('')
 apple_img = pygame.image.load('')
