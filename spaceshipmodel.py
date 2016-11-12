@@ -253,7 +253,7 @@ def gameLoop():
           if lzls[k].pos[0] > display_width or lzls[k].pos[0] < 0:
                del lzls[k]
                k -= 1
-          elif lzls[k].pos[1] > display_hight or lzls[k].pos[1] < 0:
+          elif lzls[k].pos[1] > display_height or lzls[k].pos[1] < 0:
                del lzls[k]
                k -=1
           k += 1
