@@ -162,7 +162,6 @@ def message_to_screen(msg, color, y_displace=0, size="small"):
 
 thyme = time.time()
 lzls =[]
-global Enimils
 def gameLoop():
     gameExit = False
     gameOver = False
