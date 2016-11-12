@@ -198,6 +198,7 @@ def gameLoop():
                         gameExit = True
                         gameOver = False
                     if event.key == pygame.K_c:
+                        Enimils = []
                         gameLoop()
 
         for event in pygame.event.get():
