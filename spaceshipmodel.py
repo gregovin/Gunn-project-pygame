@@ -1,23 +1,26 @@
 folder = str(input("what is the folder path of the downloaded folder?"))
-folder = folder.replace("C:/Users/", "")
+folder = folder.replace("/?Users/", "")
+folder = folder.replace("C:/", "")
 folder = folder.replace("/?Gunn-project-pygame/?", "")
 folder = folder.replace("/\z", "")
-icon_path = "C:/Users/" + folder + "/Gunn-project-pygame/spaceship.jpeg"
-def check(path,image):
-   try:
-      icon = pygame.image.load(icon_path)
-   except:
-      print("remember to include you username!")
-      folder = str(input("Not a valid forlder path, what is the folder path of the downloaded folder?"))
-      if image == "icon":
-         pt2 = "/Gunn-project-pygame/spaceship.jpeg"
-         folder = folder.replace("C:/Users/", "")
-         folder = folder.replace("/?Gunn-project-pygame/?", "")
-         folder = folder.replace("/\z", "")
-         icon_path = "C:/Users/" + folder + pt2
-         icon_check(icon_path, image)
-check(icon_path, "icon")
+icon_path = "/Users/" + folder + "/Gunn-project-pygame-master/spaceship.jpeg"
 import pygame
+def check(path,image):
+     print path
+     try:
+     	icon = pygame.image.load(path)
+     except:
+     	print("remember to include you username!")
+     	folder = str(input("Not a valid forlder path, what is the folder path of the downloaded folder?"))
+     	if image == "icon":
+        	 pt2 = "/Gunn-project-pygame/spaceship.jpeg"
+        	 folder = folder.replace("C:/Users/", "")
+         	 folder = folder.replace("/?Gunn-project-pygame/?", "")
+        	 folder = folder.replace("/\z", "")
+        	 icon_path = "C:/Users/" + folder + pt2
+        	 icon_check(icon_path, image)
+check(icon_path, "icon")
+icon = pygame.image.load(icon_path)
 import time
 import random
 def atan3(y, x):
@@ -60,8 +63,8 @@ display_height = 600
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Spaceships')
 pygame.display.set_icon(icon)
-Enimy = pygame.image.load('C:/Users/'+folder+'/Enimy.png')
-You = pygame.image.load('C:/User/'+folder+'/you.png')
+Enimy = pygame.image.load('/Users/'+folder+'/Enimy.png')
+You = pygame.image.load('/User/'+folder+'/you.png')
 
 clock = pygame.time.Clock()
 AppleThickness = 30
