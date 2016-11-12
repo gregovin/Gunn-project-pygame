@@ -15,8 +15,9 @@ class Enimy:
       self.pos[0] = self.pos[0] + self.vel[0]
       self.pos[1] = self.pos[1] + self.vel[0]
       
-   def __init__(self, poses, vels, rota):
+   def __init__(self, poses, vels):
       self.pos = poses
       self.vel = vels
-      self.rot = rota
+      self.rot = atan3(vels[1],vels[0])
+pygame.init
    
