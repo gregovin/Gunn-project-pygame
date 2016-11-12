@@ -53,7 +53,7 @@ class Enimy:
       self.rot = 0
 class Lazer:
    def __init__ (self, positon, rotation):
-      self.pos = position
+      self.pos = positon
       self.rot = rotation
    def update(self):
       self.pos[0] += 10 * math.sin(self.rot)
