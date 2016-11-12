@@ -173,6 +173,7 @@ def gameLoop():
     lead_y_change = 0
 
     Enimils = []
+    lzsl = []
     while not gameExit:
         if gameOver:
             gameDisplay.fill(white)
