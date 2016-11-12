@@ -59,7 +59,7 @@ class Lazer:
       self.pos[0] += 10 * math.sin(rotation)
       self.pos[1] += 10 * math.cos(rotation)
 pygame.init()
-
+print "init"
 white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
@@ -104,6 +104,7 @@ def pause():
 def score(score):
     text = smallfont.render("Score:" + str(score), True, black)
     gameDisplay.blit(text, [0,0])
+print "init"
 def randAppleGen():
     randAppleX = round(random.randrange(0, display_width - AppleThickness))  # /10.0)*10.0
     randAppleY = round(random.randrange(0, display_height - AppleThickness))  # /10.0)*10.0
@@ -276,6 +277,7 @@ def gameLoop():
 
     pygame.quit()
     quit()
+print "intro"
 game_intro()
-
+print "loop"
 gameLoop()
