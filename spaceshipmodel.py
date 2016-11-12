@@ -4,7 +4,7 @@ folder = folder.replace("C:/", "")
 folder = folder.replace("/?Gunn-project-pygame/?", "")
 folder = folder.replace("/\z", "")
 icon_path = "/Users/" + folder + "/Gunn-project-pygame-master/spaceship.jpeg"
-Enimils
+Enimils = []
 import pygame
 def check(path,image):
      print path
@@ -163,7 +163,7 @@ def message_to_screen(msg, color, y_displace=0, size="small"):
 thyme = time.time()
 lzls =[]
 Enimils = []
-def gameLoop(Enimils=[]):
+def gameLoop():
     gameExit = False
     gameOver = False
 
@@ -199,8 +199,8 @@ def gameLoop(Enimils=[]):
                         gameExit = True
                         gameOver = False
                     if event.key == pygame.K_c:
-                        Enimils = []
-                        gameLoop()
+                         Enimils = []
+                         gameLoop()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
