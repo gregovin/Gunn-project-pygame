@@ -136,7 +136,7 @@ def game_intro():
 
 
 def display(Player):
-    Disp = pygame.transform.rotate(You, player[4])
+    Disp = pygame.transform.rotate(You, player[4]*180/math.pi)
 
     gameDisplay.blit(Disp, (player[0],player[1]))
     player[0] += player[2]
@@ -234,7 +234,7 @@ def gameLoop():
         gameDisplay.fill(white)
         #pygame.draw.rect(gameDisplay, red, [randAppleX, randAppleY, AppleThickness, AppleThickness])
         for i in Enimils:
-            gameDisplay.blit(pygame.transform.rotate(Enimage, i.rot), (i.pos[0], i.pos[1]))
+            gameDisplay.blit(pygame.transform.rotate(Enimage, i.rot*180/math.pi), (i.pos[0], i.pos[1]))
             if (i.pos[0]-player[0])**2 + (i.pos[1]-player[1])**2 < Enimyrange ** 2:
                 gameover = True
             i.update()
@@ -242,7 +242,7 @@ def gameLoop():
         k = 0
         while k<len(lzls):
           v = 0
-          gameDisplay.blit(pygame.transform.rotate(lz, lzls[k].rot), (lzls[k].pos[0], lzls[k].pos[1]))
+          gameDisplay.blit(pygame.transform.rotate(lz, lzls[k].rot * 180/math.pi), (lzls[k].pos[0], lzls[k].pos[1]))
           while v<len(Enimils):
                if (lzls[k].pos[0] - Enimils[v].pos[0])**2 + (lzls[k].pos[1] - Enimils[v].pos[1])**2 < Enimyrange**2:
                     del lzls[k]
@@ -258,7 +258,7 @@ def gameLoop():
                k -=1
           k += 1
         display(player)
-        score(time.time()-thyme)
+        score(player[4])
         pygame.display.flip()
 
         ##        if lead_x >= randAppleX and lead_x <= randAppleX + AppleThickness:
