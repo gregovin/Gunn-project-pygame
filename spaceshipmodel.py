@@ -71,9 +71,9 @@ display_height = 600
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Spaceships')
 pygame.display.set_icon(icon)
-Enimage = pygame.image.load('/Users/'+folder+'/Enimy.png')
-You = pygame.image.load('/User/'+folder+'/you.png')
-lz = pygame.image.load('/user/'+folder+'/lazer.png')
+Enimage = pygame.image.load('/Users/'+folder+'/Gunn-project-pygame-master/Enimy.png')
+You = pygame.image.load('/User/'+folder+'/Gunn-project-pygame-master/you.png')
+lz = pygame.image.load('/user/'+folder+'/Gunn-project-pygame-master/lazer.png')
 You = pygame.transform.rotate(You, 45)
 clock = pygame.time.Clock()
 Enimyrange=10
