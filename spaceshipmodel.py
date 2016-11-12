@@ -3,10 +3,10 @@ folder = folder.replace("/?Users/", "")
 folder = folder.replace("C:/", "")
 folder = folder.replace("/?Gunn-project-pygame/?", "")
 folder = folder.replace("/\z", "")
-pygame.key.set_repeat(100, 100)
 icon_path = "/Users/" + folder + "/Gunn-project-pygame-master/spaceship.jpeg"
 Enimils = []
 import pygame
+pygame.key.set_repeat(100, 100)
 def check(path,image):
      print path
      try:
