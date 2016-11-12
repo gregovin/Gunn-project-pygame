@@ -1,4 +1,4 @@
-folder = str(input("what is the folder path of the downloaded folded"))
+folder = str(input("what is the folder path of the downloaded folder?"))
 folder = folder.replace("C:/Users/", "")
 folder = folder.replace("/?Gunn-project-pygame/?", "")
 folder = folder.replace("/\z", "")
@@ -7,12 +7,14 @@ def check(path,image):
    try:
       icon = pygame.image.load(icon_path)
    except:
-      folder = str(input("what is the folder path of the downloaded folded"))
-   if image == "icon"
-      pt = "/Gunn-project-pygame/spaceship.jpeg"
-   folder = folder.replace("C:/Users/", "")
-   icon_path = "C:/Users/" + folder + pt2
-   icon_check(icon_path, image)
+      folder = str(input("Not a valid forlder path, what is the folder path of the downloaded folder?"))
+      if image == "icon"
+         pt2 = "/Gunn-project-pygame/spaceship.jpeg"
+         folder = folder.replace("C:/Users/", "")
+         folder = folder.replace("/?Gunn-project-pygame/?", "")
+         folder = folder.replace("/\z", "")
+         icon_path = "C:/Users/" + folder + pt2
+         icon_check(icon_path, image)
 check(icon_path, "icon")
 import pygame
 import time
@@ -57,7 +59,7 @@ display_height = 600
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Spaceships')
 pygame.display.set_icon(icon)
-img = pygame.image.load('')
+img = pygame.image.load('C:/Users/'+folder+'/enimy.png')
 apple_img = pygame.image.load('')
 
 clock = pygame.time.Clock()
