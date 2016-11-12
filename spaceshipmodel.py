@@ -173,7 +173,8 @@ def gameLoop():
     lead_y_change = 0
 
     Enimils = []
-    lzsl = []
+    lzls = []
+    player = [display_width/2, display_height/2, 0, 0, 0]
     while not gameExit:
         if gameOver:
             gameDisplay.fill(white)
@@ -278,7 +279,7 @@ def gameLoop():
         ##                randAppleY = round(random.randrange(0, display_height-block_size))#/10.0)*10.0
         ##                snakeLength += 1
 
-        if random.randint(0, 10) > 8:
+        if random.randint(0, 20) > 18:
             x, y = random.randint(0, display_width), random.randint(0, display_height)
             if (x-player[0])**2 + (y-player[1])**2 >= Enimyrange**2:
                Enimils.append(Enimy([x, y]))
