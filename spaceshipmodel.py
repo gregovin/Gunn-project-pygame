@@ -22,6 +22,7 @@ def check(path,image):
 check(icon_path, "icon")
 icon = pygame.image.load(icon_path)
 import time
+import math
 import random
 def atan3(y, x):
    if x==0 and y==0:
