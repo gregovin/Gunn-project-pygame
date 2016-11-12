@@ -45,7 +45,7 @@ class Enimy:
    def update(self):
       self.pos[0] = self.pos[0] + self.vel[0]
       self.pos[1] = self.pos[1] + self.vel[1]
-      self.rot = atan3(self.vel[1],self.vel[0])
+      self.rot = atan3(self.vel[1], self.vel[0])
       
    def __init__(self, poses):
       self.pos = poses
