@@ -4,6 +4,7 @@ folder = folder.replace("C:/", "")
 folder = folder.replace("/?Gunn-project-pygame/?", "")
 folder = folder.replace("/\z", "")
 icon_path = "/Users/" + folder + "/Gunn-project-pygame-master/spaceship.jpeg"
+Enimils = []
 import pygame
 def check(path,image):
      print path
@@ -46,10 +47,10 @@ class Enimy:
       self.pos[1] = self.pos[1] + self.vel[1]
       self.rot = atan3(vel[1]/vel[0])
       
-   def __init__(self, poses, vels):
+   def __init__(self, poses):
       self.pos = poses
-      self.vel = vels
-      self.rot = atan3(vels[1],vels[0])
+      self.vel = [0, 0]
+      self.rot = 0
 class Lazer:
    def __init__ (positon, rotation):
       pos = position
@@ -72,9 +73,10 @@ pygame.display.set_caption('Spaceships')
 pygame.display.set_icon(icon)
 Enimy = pygame.image.load('/Users/'+folder+'/Enimy.png')
 You = pygame.image.load('/User/'+folder+'/you.png')
-You = pygame.transform.rotate()
+lz = pygame.image.load('/user/'+folder+'/lazer.png')
+You = pygame.transform.rotate(You, 45)
 clock = pygame.time.Clock()
-Enimyrange=30
+Enimyrange=10
 block_size = 20
 FPS = 15
 direction = "right"
@@ -131,24 +133,12 @@ def game_intro():
         clock.tick(15)
 
 
-def snake(block_size, snakelist):
-    if direction == "right":
-        head = pygame.transform.rotate(img, 270)
+def display(Player):
+    Disp = pygame.transform.rotate(You, player[4])
 
-    if direction == "left":
-        head = pygame.transform.rotate(img, 90)
-
-    if direction == "up":
-        head = img
-
-    if direction == "down":
-        head = pygame.transform.rotate(img, 180)
-
-    gameDisplay.blit(head, (snakelist[-1][0], snakelist[-1][1]))
-
-    for XnY in snakelist[:-1]:
-        pygame.draw.rect(gameDisplay, green, [XnY[0], XnY[1], block_size, block_size])
-
+    gameDisplay.blit(Disp, (player[0],player[1]))
+    player[0] += player[2]
+    player[1] += player[4]
 
 def text_objects(text, color, size):
     if size == "small":
@@ -166,21 +156,17 @@ def message_to_screen(msg, color, y_displace=0, size="small"):
     textRect.center = (display_width / 2), (display_height / 2) + y_displace
     gameDisplay.blit(textSurf, textRect)
 
-
+thyme = time.time()
+lzls =[]
 def gameLoop():
-    global direction
     gameExit = False
     gameOver = False
-    direction = "right"
 
     lead_x = display_width / 2
     lead_y = display_height / 2
 
     lead_x_change = 10
     lead_y_change = 0
-
-    snakeList = []
-    snakeLength = 1
 
     randAppleX = round(random.randrange(0, display_width - AppleThickness))  # /10.0)*10.0
     randAppleY = round(random.randrange(0, display_height - AppleThickness))  # /10.0)*10.0
@@ -217,49 +203,46 @@ def gameLoop():
                 gameExit = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    direction = "left"
+                    player[2] -= 1
                     lead_x_change = -block_size
                     lead_y_change = 0
                 elif event.key == pygame.K_RIGHT:
-                    direction = "right"
+                    player[2] += 1
                     lead_x_change = block_size
                     lead_y_change = 0
                 elif event.key == pygame.K_UP:
-                    direction = "up"
+                    player[3] -= 1
                     lead_y_change = -block_size
                     lead_x_change = 0
                 elif event.key == pygame.K_DOWN:
-                    direction = "down"
+                    player[3] += 1
                     lead_y_change = block_size
                     lead_x_change = 0
+                elif event.key == pygame.k_SPACE:
+                    lzls.append(Lazer([5*math.sin(player[4]),5*math.cos(player[4])],player[4]))
                 elif event.key == pygame.K_p:
                     pause()
-
-        if lead_x >= display_width or lead_x < 0 or lead_y >= display_height or lead_y < 0:
-            gameOver = True
-
-        lead_x += lead_x_change
-        lead_y += lead_y_change
+        if player[0] > display_width:
+            player[0] = 1
+        elif player[0] < 0:
+            player[0] = display_width-1
+        if player[1] > display_height:
+            player[1] = 1
+        elif player[1] < 0:
+            player[1] = display_height-1
+        player[4] = atan3(player[3], player[2])
 
         gameDisplay.fill(white)
-
-
         #pygame.draw.rect(gameDisplay, red, [randAppleX, randAppleY, AppleThickness, AppleThickness])
-        gameDisplay.blit(apple_img, (randAppleX, randAppleY))
-        snakeHead = []
-        snakeHead.append(lead_x)
-        snakeHead.append(lead_y)
-        snakeList.append(snakeHead)
-
-        if len(snakeList) > snakeLength:
-            del snakeList[0]
-
-        for eachSegment in snakeList[:-1]:
-            if eachSegment == snakeHead:
-                gameOver = True
-
-        snake(block_size, snakeList)
-        score(snakeLength-1)
+        for i in Enimils:
+            gameDisplay.blit(Enimy, (i.pos[0], i.pos[1]))
+            if (i.pos[0]-player[0])**2 + (i.pos[1]-player[1])**2 < Enimyrange:
+                gameover = True
+            i.update()
+            i.track(player[0], player[1])
+        for i in lzls:
+            gameDisplay.blit(
+        score(time.time()-thyme)
         pygame.display.update()
 
         ##        if lead_x >= randAppleX and lead_x <= randAppleX + AppleThickness:
@@ -268,17 +251,8 @@ def gameLoop():
         ##                randAppleY = round(random.randrange(0, display_height-block_size))#/10.0)*10.0
         ##                snakeLength += 1
 
-        if lead_x > randAppleX and lead_x < randAppleX + AppleThickness or lead_x + block_size > randAppleX and lead_x + block_size < randAppleX + AppleThickness:
-
-            if lead_y > randAppleY and lead_y < randAppleY + AppleThickness:
-
-                randAppleX, randAppleY = randAppleGen()
-                snakeLength += 1
-
-            elif lead_y + block_size > randAppleY and lead_y + block_size < randAppleY + AppleThickness:
-
-                randAppleX, randAppleY = randAppleGen()
-                snakeLength += 1
+        if random.randint(0, 10) > 8:
+            Enimils.append(Enimy([random.randint(0, display_width),random.randint(0, display_hight)]))
 
         clock.tick(FPS)
 
