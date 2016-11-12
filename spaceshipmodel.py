@@ -78,11 +78,10 @@ Enimyrange=10
 block_size = 20
 FPS = 15
 direction = "right"
-
+pygame.init()
 smallfont = pygame.font.SysFont("comicsansms", 25)
 medfont = pygame.font.SysFont("comicsansms", 50)
 largefont = pygame.font.SysFont("comicsansms", 80)
-pygame.init()
 def pause():
     paused = True
     while paused:
