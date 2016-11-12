@@ -129,7 +129,7 @@ def game_intro():
         message_to_screen("have fun", black, 10)
         message_to_screen("Press C to play, Q to quit, and P to pause.", black, 180)
 
-        pygame.display.update()
+        pygame.display.flip()
         clock.tick(15)
 
 
@@ -259,7 +259,7 @@ def gameLoop():
           k += 1
         display(player)
         score(time.time()-thyme)
-        pygame.display.update()
+        pygame.display.flip()
 
         ##        if lead_x >= randAppleX and lead_x <= randAppleX + AppleThickness:
         ##            if lead_y >= randAppleY and lead_y <= randAppleY + AppleThickness:
