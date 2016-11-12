@@ -219,7 +219,7 @@ def gameLoop():
                     lead_y_change = block_size
                     lead_x_change = 0
                 elif event.key == pygame.K_SPACE:
-                    lzls.append(Lazer([playe[0]+5*math.sin(player[4]),player[1]+5*math.cos(player[4])],player[4]))
+                    lzls.append(Lazer([player[0]+5*math.sin(player[4]),player[1]+5*math.cos(player[4])],player[4]))
                 elif event.key == pygame.K_p:
                     pause()
         if player[0] > display_width:
@@ -244,11 +244,14 @@ def gameLoop():
           v = 0
           gameDisplay.blit(pygame.transform.rotate(lz, lzls[k].rot * 180/math.pi), (lzls[k].pos[0], lzls[k].pos[1]))
           while v<len(Enimils):
-               if (lzls[k].pos[0] - Enimils[v].pos[0])**2 + (lzls[k].pos[1] - Enimils[v].pos[1])**2 < Enimyrange**2:
-                    del lzls[k]
-                    del Enimils[v]
-                    v -= 1
-                    k -= 1
+               try:
+                    if (lzls[k].pos[0] - Enimils[v].pos[0])**2 + (lzls[k].pos[1] - Enimils[v].pos[1])**2 < Enimyrange**2:
+                         del lzls[k]
+                         del Enimils[v]
+                         v -= 1
+                         k -= 1
+               except:
+                   v = 100 
                v += 1
           if lzls[k].pos[0] > display_width or lzls[k].pos[0] < 0:
                del lzls[k]
