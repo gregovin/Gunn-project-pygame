@@ -3,6 +3,7 @@ folder = folder.replace("/?Users/", "")
 folder = folder.replace("C:/", "")
 folder = folder.replace("/?Gunn-project-pygame/?", "")
 folder = folder.replace("/\z", "")
+pygame.key.set_repeat(100, 100)
 icon_path = "/Users/" + folder + "/Gunn-project-pygame-master/spaceship.jpeg"
 Enimils = []
 import pygame
@@ -216,7 +217,7 @@ def gameLoop():
                     player[3] += 1
                     lead_y_change = block_size
                     lead_x_change = 0
-                elif event.key == pygame.k_SPACE:
+                elif event.key == pygame.K_SPACE:
                     lzls.append(Lazer([5*math.sin(player[4]),5*math.cos(player[4])],player[4]))
                 elif event.key == pygame.K_p:
                     pause()
