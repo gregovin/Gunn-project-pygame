@@ -34,7 +34,6 @@ def atan3(y, x):
       return -math.pi/2
    else:
       return math.atan2(y, x)
-player = [200, 200, 0, 0, 0]
 class Enimy:
    def track(self, x, y):
      distx = x-self.pos[0]
@@ -79,6 +78,9 @@ clock = pygame.time.Clock()
 Enimyrange=20
 block_size = 20
 FPS = 15
+player = [display_width/2, display_height/2, 0, 0, 0]
+you_rect = You.get_rect()
+you_rect.center = (player[0], player[1])
 direction = "right"
 pygame.init()
 smallfont = pygame.font.SysFont("comicsansms", 25)
@@ -137,8 +139,8 @@ def game_intro():
 
 def display(Player):
     Disp = pygame.transform.rotate(You, -player[4]*180/math.pi)
-
-    gameDisplay.blit(Disp, (player[0],player[1]))
+    you_rect.center = (player[0], player[1])
+    gameDisplay.blit(Disp, (you_rect.left, you_rect.top))
     player[0] += player[2]
     player[1] += player[4]
 
@@ -236,7 +238,7 @@ def gameLoop():
         for i in Enimils:
             gameDisplay.blit(pygame.transform.rotate(Enimage, i.rot*180/math.pi), (i.pos[0], i.pos[1]))
             if (i.pos[0]-player[0])**2 + (i.pos[1]-player[1])**2 < Enimyrange ** 2:
-                gameover = True
+                gameOver = True
             i.update()
             i.track(player[0], player[1])
         k = 0
@@ -260,6 +262,7 @@ def gameLoop():
                elif lzls[k].pos[1] > display_height or lzls[k].pos[1] < 0:
                     del lzls[k]
                     k -=1
+               lzls[k].update()
                k += 1
           except:
                k = 10000
