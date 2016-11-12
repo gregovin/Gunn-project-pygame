@@ -231,17 +231,33 @@ def gameLoop():
         elif player[1] < 0:
             player[1] = display_height-1
         player[4] = atan3(player[3], player[2])
-
         gameDisplay.fill(white)
         #pygame.draw.rect(gameDisplay, red, [randAppleX, randAppleY, AppleThickness, AppleThickness])
         for i in Enimils:
-            gameDisplay.blit(Enimy, (i.pos[0], i.pos[1]))
-            if (i.pos[0]-player[0])**2 + (i.pos[1]-player[1])**2 < Enimyrange:
+            gameDisplay.blit(pygame.transform.rotate(Enimy, i.rot), (i.pos[0], i.pos[1]))
+            if (i.pos[0]-player[0])**2 + (i.pos[1]-player[1])**2 < Enimyrange ** 2:
                 gameover = True
             i.update()
             i.track(player[0], player[1])
-        for i in lzls:
-            gameDisplay.blit(
+        k = 0
+        while k<len(lzls):
+          v = 0
+          gameDisplay.blit(pygame.transform.rotate(lz, lzls[k].rot), (lzls[k].pos[0], lsls[k].pos[1]))
+          while v<len(Enimils):
+               if (lzls[k].pos[0] - Enimils[v].pos[0])**2 + (lzls[k].pos[1] - Enimils[v].pos[1])**2 < Enimyrange**2:
+                    del lzls[k]
+                    del Enimils[v]
+                    v -= 1
+                    k -= 1
+               v += 1
+          if lzls[k].pos[0] > display_width or lzls[k].pos[0] < 0:
+               del lzls[k]
+               k -= 1
+          elif lzls[k].pos[1] > display_hight or lzls[k].pos[1] < 0:
+               del lzls[k]
+               k -=1
+          k += 1
+        display(player)
         score(time.time()-thyme)
         pygame.display.update()
 
@@ -252,7 +268,9 @@ def gameLoop():
         ##                snakeLength += 1
 
         if random.randint(0, 10) > 8:
-            Enimils.append(Enimy([random.randint(0, display_width),random.randint(0, display_hight)]))
+            x, y = random.randint(0, display_width), random.randint(0, display_hight)
+            if (x-player[0])**2 + (y-player[1])**2 >= Enimyrange**2:
+               Enimils.append(Enimy(x, y))
 
         clock.tick(FPS)
 
