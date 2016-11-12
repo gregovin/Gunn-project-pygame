@@ -71,7 +71,7 @@ display_height = 600
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Spaceships')
 pygame.display.set_icon(icon)
-Enimy = pygame.image.load('/Users/'+folder+'/Enimy.png')
+Enimage = pygame.image.load('/Users/'+folder+'/Enimy.png')
 You = pygame.image.load('/User/'+folder+'/you.png')
 lz = pygame.image.load('/user/'+folder+'/lazer.png')
 You = pygame.transform.rotate(You, 45)
@@ -234,7 +234,7 @@ def gameLoop():
         gameDisplay.fill(white)
         #pygame.draw.rect(gameDisplay, red, [randAppleX, randAppleY, AppleThickness, AppleThickness])
         for i in Enimils:
-            gameDisplay.blit(pygame.transform.rotate(Enimy, i.rot), (i.pos[0], i.pos[1]))
+            gameDisplay.blit(pygame.transform.rotate(Enimage, i.rot), (i.pos[0], i.pos[1]))
             if (i.pos[0]-player[0])**2 + (i.pos[1]-player[1])**2 < Enimyrange ** 2:
                 gameover = True
             i.update()
@@ -242,7 +242,7 @@ def gameLoop():
         k = 0
         while k<len(lzls):
           v = 0
-          gameDisplay.blit(pygame.transform.rotate(lz, lzls[k].rot), (lzls[k].pos[0], lsls[k].pos[1]))
+          gameDisplay.blit(pygame.transform.rotate(lz, lzls[k].rot), (lzls[k].pos[0], lzls[k].pos[1]))
           while v<len(Enimils):
                if (lzls[k].pos[0] - Enimils[v].pos[0])**2 + (lzls[k].pos[1] - Enimils[v].pos[1])**2 < Enimyrange**2:
                     del lzls[k]
