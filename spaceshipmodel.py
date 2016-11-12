@@ -9,7 +9,7 @@ def check(path,image):
    except:
       print("remember to include you username!")
       folder = str(input("Not a valid forlder path, what is the folder path of the downloaded folder?"))
-      if image == "icon"
+      if image == "icon":
          pt2 = "/Gunn-project-pygame/spaceship.jpeg"
          folder = folder.replace("C:/Users/", "")
          folder = folder.replace("/?Gunn-project-pygame/?", "")
