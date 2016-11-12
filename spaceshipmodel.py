@@ -58,8 +58,6 @@ class Lazer:
    def update(self):
       self.pos[0] += 10 * math.sin(rotation)
       self.pos[1] += 10 * math.cos(rotation)
-pygame.init()
-print "init"
 white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
@@ -84,6 +82,7 @@ direction = "right"
 smallfont = pygame.font.SysFont("comicsansms", 25)
 medfont = pygame.font.SysFont("comicsansms", 50)
 largefont = pygame.font.SysFont("comicsansms", 80)
+pygame.init()
 def pause():
     paused = True
     while paused:
@@ -169,8 +168,6 @@ def gameLoop():
     lead_x_change = 10
     lead_y_change = 0
 
-    randAppleX = round(random.randrange(0, display_width - AppleThickness))  # /10.0)*10.0
-    randAppleY = round(random.randrange(0, display_height - AppleThickness))  # /10.0)*10.0
 
     while not gameExit:
         if gameOver:
