@@ -219,7 +219,7 @@ def gameLoop():
                     lead_y_change = block_size
                     lead_x_change = 0
                 elif event.key == pygame.K_SPACE:
-                    lzls.append(Lazer([5*math.sin(player[4]),5*math.cos(player[4])],player[4]))
+                    lzls.append(Lazer([playe[0]+5*math.sin(player[4]),player[1]+5*math.cos(player[4])],player[4]))
                 elif event.key == pygame.K_p:
                     pause()
         if player[0] > display_width:
