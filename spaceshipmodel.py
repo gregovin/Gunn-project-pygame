@@ -4,7 +4,6 @@ folder = folder.replace("C:/", "")
 folder = folder.replace("/?Gunn-project-pygame/?", "")
 folder = folder.replace("/\z", "")
 icon_path = "/Users/" + folder + "/Gunn-project-pygame-master/spaceship.jpeg"
-Enimils = []
 import pygame
 def check(path,image):
      print path
@@ -25,6 +24,7 @@ icon = pygame.image.load(icon_path)
 import time
 import math
 import random
+Enimils = []
 def atan3(y, x):
    if x==0 and y==0:
       return 0
@@ -162,7 +162,7 @@ def message_to_screen(msg, color, y_displace=0, size="small"):
 
 thyme = time.time()
 lzls =[]
-Enimils = []
+global Enimils
 def gameLoop():
     gameExit = False
     gameOver = False
