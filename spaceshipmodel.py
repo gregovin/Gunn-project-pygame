@@ -56,8 +56,8 @@ class Lazer:
       self.pos = positon
       self.rot = rotation
    def update(self):
-      self.pos[0] += 10 * math.sin(self.rot)
-      self.pos[1] += 10 * math.cos(self.rot)
+      self.pos[0] += 5 * math.sin(self.rot)
+      self.pos[1] += 5 * math.cos(self.rot)
 white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
@@ -72,6 +72,7 @@ pygame.display.set_icon(icon)
 Enimage = pygame.image.load('/Users/'+folder+'/Gunn-project-pygame-master/Enimy.png')
 You = pygame.image.load('/Users/'+folder+'/Gunn-project-pygame-master/you.png')
 lz = pygame.image.load('/users/'+folder+'/Gunn-project-pygame-master/lazer.png')
+lz = pygame.transform.scale(lz, (100, lz.get_rect().height))
 You = pygame.transform.rotate(You, 45)
 You = pygame.transform.scale(You, (You.get_rect().width/5, You.get_rect().height/5))
 clock = pygame.time.Clock()
